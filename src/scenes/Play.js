@@ -38,9 +38,9 @@ class Play extends Phaser.Scene {
         });
 
         // experimental cats
-        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0, 0);
-        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0);
-        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10).setOrigin(0,0);
+        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30, 4).setOrigin(0, 0);
+        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 100, 7).setOrigin(0,0);
+        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10, 4).setOrigin(0,0);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
@@ -55,14 +55,17 @@ class Play extends Phaser.Scene {
             frameRate: 4
         });
 
+        var bgcolor = '#F3B141';
+        var txtcolor = '#843605';
+
         // initialize score
         this.p1Score = 0;
         // display score
         let scoreConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
+            backgroundColor: bgcolor,
+            color: txtcolor,
             align: 'right',
             padding: {
                 top: 5,
@@ -88,20 +91,9 @@ class Play extends Phaser.Scene {
         this.timer = this.time.addEvent({ delay: game.settings.gameTimer });
         this.remaining = this.timer.getRemaining();
 
-        // timer config
-        let timeConfig = {
-            fontFamily: 'Courier',
-            fontSize: '28px',
-            color: '#FFFFFF',
-            align: 'right',
-            padding: {
-                top: 5,
-                bottom: 5,
-            },
-        }
         // display timer
-        this.timeShow = this.add.text(borderUISize + borderPadding, 
-                    borderUISize + borderPadding * 2, this.remaining, timeConfig);
+        this.timeShow = this.add.text(game.config.width - borderUISize * 2 - borderPadding * 2, 
+                    borderUISize + borderPadding * 2, this.remaining, scoreConfig);
         this.seconds = 0;
     }
 
