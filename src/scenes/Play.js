@@ -37,10 +37,10 @@ class Play extends Phaser.Scene {
             repeat: -1
         });
 
-        // experimental cats
-        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30, 4).setOrigin(0, 0);
-        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 100, 7).setOrigin(0,0);
-        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10, 4).setOrigin(0,0);
+        // three cats
+        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30, game.settings.spaceshipSpeed).setOrigin(0, 0);
+        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 100, game.settings.spaceshipSpeed * 2).setOrigin(0,0);
+        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10, game.settings.spaceshipSpeed).setOrigin(0,0);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
@@ -71,7 +71,7 @@ class Play extends Phaser.Scene {
                 top: 5,
                 bottom: 5,
             },
-            fixedWidth: 100
+            fixedWidth: 100,
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, 
                     borderUISize + borderPadding * 2, this.p1Score, scoreConfig);
@@ -92,7 +92,8 @@ class Play extends Phaser.Scene {
         this.remaining = this.timer.getRemaining();
 
         // display timer
-        this.timeShow = this.add.text(game.config.width - borderUISize * 2 - borderPadding * 2, 
+        scoreConfig.fixedWidth = 100;
+        this.timeShow = this.add.text(game.config.width - scoreConfig.fixedWidth - borderUISize - borderPadding, 
                     borderUISize + borderPadding * 2, this.remaining, scoreConfig);
         this.seconds = 0;
     }
