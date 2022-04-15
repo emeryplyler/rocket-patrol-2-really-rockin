@@ -8,10 +8,10 @@ class Play extends Phaser.Scene {
         this.load.image('spaceship', './assets/spaceship.png');
         this.load.image('starfield', './assets/starfield.png');
         // load spritesheet for explosions
-        this.load.spritesheet('explosion', './assets/explosion.png', 
-                    {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
+        this.load.spritesheet('explosion', './assets/cateat.png', 
+                    {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 6});
         // load spritesheet for kitty
-        this.load.spritesheet('cat', './assets/spaceshipnew.png', 
+        this.load.spritesheet('cat', './assets/cat.png', 
                     {frameWidth: 63, frameHeight: 32, startFrame: 0, endFrame: 2});
     }
 
@@ -56,8 +56,8 @@ class Play extends Phaser.Scene {
         // animation config
         this.anims.create({
             key: 'explode',
-            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 9, first: 0 }),
-            frameRate: 30
+            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 6, first: 0 }),
+            frameRate: 4
         });
 
         // initialize score
