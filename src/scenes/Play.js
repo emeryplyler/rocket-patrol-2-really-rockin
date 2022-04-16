@@ -7,6 +7,8 @@ class Play extends Phaser.Scene {
         this.load.image('rocket', './assets/fish.png');
         this.load.image('spaceship', './assets/spaceship.png');
         this.load.image('starfield', './assets/starfield.png');
+        this.load.image('sky', './assets/sky.png');
+        this.load.image('clouds', './assets/clouds.png');
         // load spritesheet for explosions
         this.load.spritesheet('explosion', './assets/cateat.png', 
                     {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 6});
@@ -16,15 +18,14 @@ class Play extends Phaser.Scene {
     }
 
     create() {
-        // place tile sprite
-        this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
-        // green UI background
-        this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x00FF00).setOrigin(0, 0);
-        // white borders
-        this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
-        this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
+        // place tile sprite for background
+        // this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
+        this.sky = this.add.tileSprite(0, 0, 640, 480, 'sky').setOrigin(0, 0);
+        this.clouds = this.add.tileSprite(0, 0, 640, 480, 'clouds').setOrigin(0, 0);
+
+        // UI bar
+        this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x795599).setOrigin(0, 0);
+        
         
         // add rocket (p1)
         this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0.5);
@@ -58,7 +59,7 @@ class Play extends Phaser.Scene {
             frameRate: 4
         });
 
-        var bgcolor = '#F3B141';
+        var bgcolor = '#83b5ff';
         var txtcolor = '#843605';
 
         // initialize score
@@ -99,6 +100,13 @@ class Play extends Phaser.Scene {
         this.timeShow = this.add.text(game.config.width - scoreConfig.fixedWidth - borderUISize - borderPadding, 
                     borderUISize + borderPadding * 2, this.remaining, scoreConfig);
         this.seconds = 0;
+        scoreConfig.fixedWidth = 0;
+
+        // white borders
+        this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
+        this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
+        this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
+        this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
     }
 
     update() {
@@ -114,7 +122,12 @@ class Play extends Phaser.Scene {
             this.scene.start("menuScene");
         }
         
-        this.starfield.tilePositionX -= 4;
+        // starfield
+        // this.starfield.tilePositionX -= 4;
+
+        this.sky.tilePositionX -= 2;
+        this.clouds.tilePositionX -= 4;
+
         if (!this.gameOver) {
             this.p1Rocket.update();
             this.ship01.update();
