@@ -60,13 +60,13 @@ class Play extends Phaser.Scene {
         });
 
         var bgcolor = '#83b5ff';
-        var txtcolor = '#843605';
+        var txtcolor = '#68418c';
 
         // initialize score
         this.p1Score = 0;
         // display score
         let scoreConfig = {
-            fontFamily: 'Courier',
+            fontFamily: 'CustomFont',
             fontSize: '28px',
             backgroundColor: bgcolor,
             color: txtcolor,
@@ -87,8 +87,10 @@ class Play extends Phaser.Scene {
         scoreConfig.fixedWidth = 0;
         this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
+            scoreConfig.fontSize = '20px';
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or <- for Menu',
                         scoreConfig).setOrigin(0.5);
+            scoreConfig.fontSize = '28px';
             this.gameOver = true;
         }, null, this);
 

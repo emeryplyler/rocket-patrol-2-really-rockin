@@ -5,10 +5,10 @@ class Credits extends Phaser.Scene {
     create() {
         // copy menu config
         let menuConfig = {
-            fontFamily: 'Courier',
+            fontFamily: 'CustomFont',
             fontSize: '20px',
             backgroundColor: '#83b5ff',
-            color: '#843605',
+            color: '#68418c',
             align: 'right',
             padding: {
                 top: 5,
@@ -17,7 +17,7 @@ class Credits extends Phaser.Scene {
             fixedWidth: 0
         }
         let overConfig = {
-            fontFamily: 'Courier',
+            fontFamily: 'CustomFont',
             fontSize: '20px',
             backgroundColor: '#83b5ff',
             color: '#ffffff',
