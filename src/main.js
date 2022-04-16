@@ -1,3 +1,30 @@
+/*
+Emery Plyler, "Wocket Patwol", April 16 2022, approx. 13-17 hrs to complete
+
+Up to 125 points:
+- animated sprite for enemies                       10
+- new spaceship thats smaller, faster, more points  20
+    > middle spaceship was permanently changed to
+    > be small, twice as fast, and worth 100 points
+- display time remaining (seconds)                  10
+- move rocket while in flight                        5
+- new title screen                                  10
+- create new artwork, ui, and sound (non sci fi)    60 
+    > 'Sky cats' theme, non-sci fi; ui has been 
+    > recolored with new font and art and sound are
+    > both new
+- 4 new explosion sfx and randomize which one plays 10
+    > the 'explosion' was changed to a meow to
+    > fit the theme; 'reow.wav' up to 'reow4.wav'
+
+Total points:                                      125
+
+Advice from Discord:
+Sky Peterson helped with attribution and text formatting
+Aidan Bacon helped with looping animation
+Arrian helped with text formatting
+*/
+
 let config = {
     type: Phaser.AUTO,
     width: 640,
