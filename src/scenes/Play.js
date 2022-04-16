@@ -162,6 +162,26 @@ class Play extends Phaser.Scene {
         }
     }
 
+    randomSound() {
+        var key = Math.floor(Math.random() * 4 + 1);
+        switch (key) {
+            case 1:
+                this.sound.play('sfx_reow');
+                break;
+            case 2:
+                this.sound.play('sfx_reow2');
+                break;
+            case 3:
+                this.sound.play('sfx_reow3');
+                break;
+            case 4:
+                this.sound.play('sfx_reow4');
+                break;
+            default:
+                return; // something has gone wrong, just don't do anything
+        }
+    }
+
     shipExplode(ship) {
         // temporarily hide ship
         ship.alpha = 0;
@@ -177,6 +197,7 @@ class Play extends Phaser.Scene {
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
         // sound
-        this.sound.play('sfx_reow');
+        // this.sound.play('sfx_reow');
+        this.randomSound();
     }
 }
