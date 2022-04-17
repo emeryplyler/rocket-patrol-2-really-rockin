@@ -1,7 +1,7 @@
 /*
 Emery Plyler, "Wocket Patwol", April 16 2022, approx. 13-17 hrs to complete
 
-Up to 125 points:
+Up to 135 points:
 - animated sprite for enemies                       10
 - new spaceship thats smaller, faster, more points  20
     > middle spaceship was permanently changed to
@@ -16,8 +16,9 @@ Up to 125 points:
 - 4 new explosion sfx and randomize which one plays 10
     > the 'explosion' was changed to a meow to
     > fit the theme; 'reow.wav' up to 'reow4.wav'
+- parallax scrolling background                     10
 
-Total points:                                      125
+Total points:                                      135
 
 Advice from Discord:
 Sky Peterson helped with attribution and text formatting
